@@ -1,7 +1,9 @@
 package com.example.NewSeconds;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -25,6 +27,7 @@ import java.util.ArrayList;
 
 public class LoadingActivity extends Activity {
 
+    SQLiteDatabase db;
     ArrayList<ArrayList<Article>> all_article=new ArrayList<>();
     ArrayList<Article> article_list100 = new ArrayList<Article>();
     ArrayList<Article> article_list101 = new ArrayList<Article>();
@@ -36,6 +39,11 @@ public class LoadingActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
+
+        DBHelper helper;
+        helper = new DBHelper(LoadingActivity.this, "articledb.db", null, 1);
+        db = helper.getWritableDatabase();
+        helper.onCreate(db);
 
         new LoadingActivity.JSONTask().execute("http://ec2-3-34-189-52.ap-northeast-2.compute.amazonaws.com:3000/users");
         startLoading();
@@ -49,7 +57,7 @@ public class LoadingActivity extends Activity {
             public void run() {
                 Intent intent=new Intent(LoadingActivity.this,FirstCheckActivity.class);
 //                Intent intent=new Intent(LoadingActivity.this,MainActivity.class);
-                intent.putExtra("all_article",all_article);
+//                intent.putExtra("all_article",all_article);
                 startActivity(intent);
                 finish();
             }
@@ -147,37 +155,53 @@ public class LoadingActivity extends Activity {
                     int category = jsonObject.getInt("CATEGORY");
                     int count = jsonObject.getInt("COUNT");
                     String image = jsonObject.getString("IMAGE");
-                    Article article=new Article(title,content1,content2,content3,content4,content5,content6,content7,date,category,count,image);
-                    switch (category){
-                        case 100:
-                            article_list100.add(article);
-                            break;
-                        case 101:
-                            article_list101.add(article);
-                            break;
-                        case 102:
-                            article_list102.add(article);
-                            break;
-                        case 103:
-                            article_list103.add(article);
-                            break;
-                        case 104:
-                            article_list104.add(article);
-                            break;
-                        case 105:
-                            article_list105.add(article);
-                            break;
-                        default:
-                            break;
-                    }
+
+                    ContentValues values = new ContentValues();
+                    values.put("title",title);
+                    values.put("content1",content1);
+                    values.put("content2",content2);
+                    values.put("content3",content3);
+                    values.put("content4",content4);
+                    values.put("content5",content5);
+                    values.put("content6",content6);
+                    values.put("content7",content7);
+                    values.put("date",date);
+                    values.put("category",category);
+                    values.put("count",count);
+                    values.put("image",image);
+                    db.insert("article",null,values);
+
+//                    Article article=new Article(title,content1,content2,content3,content4,content5,content6,content7,date,category,count,image);
+//                    switch (category){
+//                        case 100:
+//                            article_list100.add(article);
+//                            break;
+//                        case 101:
+//                            article_list101.add(article);
+//                            break;
+//                        case 102:
+//                            article_list102.add(article);
+//                            break;
+//                        case 103:
+//                            article_list103.add(article);
+//                            break;
+//                        case 104:
+//                            article_list104.add(article);
+//                            break;
+//                        case 105:
+//                            article_list105.add(article);
+//                            break;
+//                        default:
+//                            break;
+//                    }
                 }
             } catch (JSONException e) { e.printStackTrace(); }
-            all_article.add(article_list100);
-            all_article.add(article_list101);
-            all_article.add(article_list102);
-            all_article.add(article_list103);
-            all_article.add(article_list104);
-            all_article.add(article_list105);
+//            all_article.add(article_list100);
+//            all_article.add(article_list101);
+//            all_article.add(article_list102);
+//            all_article.add(article_list103);
+//            all_article.add(article_list104);
+//            all_article.add(article_list105);
         }
     }
 }
