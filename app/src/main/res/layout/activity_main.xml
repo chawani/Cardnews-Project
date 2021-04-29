@@ -47,6 +47,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/side_bar"
-        app:menu="@menu/menu_item"/>
+        app:menu="@menu/menu_item"
+        />
 
 </androidx.drawerlayout.widget.DrawerLayout>

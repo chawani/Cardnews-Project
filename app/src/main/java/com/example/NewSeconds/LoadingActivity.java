@@ -3,6 +3,7 @@ package com.example.NewSeconds;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -45,7 +46,11 @@ public class LoadingActivity extends Activity {
         db = helper.getWritableDatabase();
         helper.onCreate(db);
 
-        new LoadingActivity.JSONTask().execute("http://ec2-3-34-189-52.ap-northeast-2.compute.amazonaws.com:3000/users");
+        Cursor cursor = db.rawQuery("SELECT name FROM sqlite_master WHERE type='table' AND name ='article'" , null);
+        cursor.moveToFirst();
+        if(cursor.getCount()<=0){
+            new LoadingActivity.JSONTask().execute("http://ec2-54-180-133-6.ap-northeast-2.compute.amazonaws.com:3000/users");
+        }
         startLoading();
 
     }

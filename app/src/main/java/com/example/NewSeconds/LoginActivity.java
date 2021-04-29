@@ -28,8 +28,9 @@ public class LoginActivity extends Activity {
     private String id;
     private String pass;
     private String plus;
-    private SharedPreferences preferences;
-
+    private SharedPreferences pref;
+    private SharedPreferences.Editor editor;
+    String global_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +46,8 @@ public class LoginActivity extends Activity {
         String first_news = intent.getStringExtra("first_news");
         System.out.println(first_news);
 
-        preferences = getSharedPreferences("UserInfo", MODE_PRIVATE);
+        pref = getSharedPreferences("UserInfo", MODE_PRIVATE);
+        editor = pref.edit();
 
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +56,7 @@ public class LoginActivity extends Activity {
                 pass=e_pass.getText().toString();
                 plus="id="+id+"&pw="+pass;
 
-                String url = "http://ec2-3-34-189-52.ap-northeast-2.compute.amazonaws.com:5000/login?"+plus;
+                String url = "http://ec2-54-180-133-6.ap-northeast-2.compute.amazonaws.com:5000/login?"+plus;
                 // AsyncTask를 통해 HttpURLConnection 수행.
                 new LoginActivity.NetworkTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, url);
             }
@@ -133,6 +135,9 @@ public class LoginActivity extends Activity {
             super.onPostExecute(result);
             System.out.println(result);
             if(result.equals("로그인 성공")){
+                editor.putString("id",id);
+                editor.commit();
+                System.out.println("id는"+pref.getString("id", ""));
                 Intent intent=new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
                 finish();

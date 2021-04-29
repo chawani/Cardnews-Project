@@ -1,16 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="18dp"
     android:paddingRight="18dp"
-    android:background="@color/purple_200">
+    android:background="@drawable/first_page_image1">
+
+
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
+        android:layout_height="400dp"
         android:layout_gravity="center_vertical"
+        android:fontFamily="@font/hs_bombaram_regular"
+        android:gravity="center|bottom"
+        android:text="NewSeconds"
+        android:textColor="#FFFFFF"
+        android:shadowColor="#FF464646"
+        android:shadowDx="5.0"
+        android:shadowDy="5.0"
+        android:shadowRadius="1.0"
+        android:textSize="40sp" />
 
-        android:text="로딩화면 테스트"/>
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:text="10초 뉴스"
+        android:textColor="#FFFFFF"
+        android:fontFamily="@font/hs_bombaram_regular"
+        android:gravity="center"
+        android:textSize="25sp"/>
+
 </LinearLayout>

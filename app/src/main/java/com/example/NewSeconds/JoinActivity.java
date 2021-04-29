@@ -46,7 +46,7 @@ public class JoinActivity extends Activity {
                 pass=e_pass.getText().toString();
                 plus="id="+id+"&pw="+pass+"&news="+first_news;
 
-                String url = "http://ec2-3-34-189-52.ap-northeast-2.compute.amazonaws.com:5000/signin?"+plus;
+                String url = "http://ec2-54-180-133-6.ap-northeast-2.compute.amazonaws.com:5000/signin?"+plus;
                 // AsyncTask를 통해 HttpURLConnection 수행.
                 new JoinActivity.NetworkTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, url);
             }

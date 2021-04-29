@@ -2,57 +2,76 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     android:orientation="vertical">
 
+    <ImageView
+        android:id="@+id/gif_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="관심 있는 뉴스기사를 골라주세요. (앱 설치 시 최초 한 번)\n"
+        android:textSize="28sp" />
 
     <CheckBox
         android:id="@+id/checkBox1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
         android:text="정치"
-        android:textSize="25sp"/>
+        android:textSize="18sp" />
 
     <CheckBox
         android:id="@+id/checkBox2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
         android:text="경제"
-        android:textSize="25sp"/>
+        android:textSize="18sp" />
 
     <CheckBox
         android:id="@+id/checkBox3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
         android:text="사회"
-        android:textSize="25sp"/>
+        android:textSize="18sp" />
 
     <CheckBox
         android:id="@+id/checkBox4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
         android:text="생활/문화"
-        android:textSize="25sp"/>
+        android:textSize="18sp" />
 
     <CheckBox
         android:id="@+id/checkBox5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
         android:text="세계"
-        android:textSize="25sp"/>
+        android:textSize="18sp" />
 
-    <CheckBox
-        android:id="@+id/checkBox6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="IT/과학"
-        android:textSize="25sp"/>
+<!--    <CheckBox-->
+<!--        android:id="@+id/checkBox6"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="5dp"-->
+<!--        android:text="IT/과학"-->
+<!--        android:textSize="18sp" />-->
+
     <Button
         android:id="@+id/checkbtn"
         android:layout_width="150sp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="확인"
-        android:textSize="25sp"
-        android:layout_gravity="center">
+        android:textSize="25sp">
 
     </Button>
 

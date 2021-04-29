@@ -22,5 +22,8 @@
                 android:title="IT/과학"/>
         </menu>
     </item>
+    <item
+        android:id="@+id/cate_7"
+        android:title="Logout"/>
 
 </menu>
