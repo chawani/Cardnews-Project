@@ -1,11 +1,14 @@
 package com.example.NewSeconds;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,6 +26,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class LoginActivity extends Activity {
     private String id;
@@ -31,6 +37,7 @@ public class LoginActivity extends Activity {
     private SharedPreferences pref;
     private SharedPreferences.Editor editor;
     String global_id;
+    private String first_news;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +50,7 @@ public class LoginActivity extends Activity {
         Button join_button=(Button) findViewById(R.id.signupButton);
 
         Intent intent = getIntent();
-        String first_news = intent.getStringExtra("first_news");
+        first_news = intent.getStringExtra("first_news");
         System.out.println(first_news);
 
         pref = getSharedPreferences("UserInfo", MODE_PRIVATE);
@@ -58,14 +65,15 @@ public class LoginActivity extends Activity {
 
                 String url = "http://ec2-54-180-133-6.ap-northeast-2.compute.amazonaws.com:5000/login?"+plus;
                 // AsyncTask를 통해 HttpURLConnection 수행.
-                new LoginActivity.NetworkTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, url);
+                ExecutorService THREAD_POOL= Executors.newFixedThreadPool(5);
+                new LoginActivity.NetworkTask().executeOnExecutor(THREAD_POOL, url);
+
             }
         });
         join_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(), JoinActivity.class);
-                intent.putExtra("first_news",first_news);
+                Intent intent=new Intent(getApplicationContext(), FirstCheckActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -134,15 +142,26 @@ public class LoginActivity extends Activity {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
             System.out.println(result);
-            if(result.equals("로그인 성공")){
+            if(result.equals("success")){
                 editor.putString("id",id);
                 editor.commit();
                 System.out.println("id는"+pref.getString("id", ""));
                 Intent intent=new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("first_news",first_news);
                 startActivity(intent);
                 finish();
             }
-
+            else{
+                AlertDialog.Builder dlg = new AlertDialog.Builder(LoginActivity.this);
+                dlg.setTitle("로그인 실패"); //제목
+                dlg.setMessage("다시 로그인 해 주세요."); // 메시지
+//                버튼 클릭시 동작
+                dlg.setPositiveButton("확인",new DialogInterface.OnClickListener(){
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+                dlg.show();
+            }
         }
     }
 }

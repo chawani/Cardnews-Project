@@ -48,9 +48,9 @@ public class LoadingActivity extends Activity {
 
         Cursor cursor = db.rawQuery("SELECT name FROM sqlite_master WHERE type='table' AND name ='article'" , null);
         cursor.moveToFirst();
-        if(cursor.getCount()<=0){
-            new LoadingActivity.JSONTask().execute("http://ec2-54-180-133-6.ap-northeast-2.compute.amazonaws.com:3000/users");
-        }
+        //if(cursor.getCount()<=0){
+            //new LoadingActivity.JSONTask().execute("http://ec2-54-180-133-6.ap-northeast-2.compute.amazonaws.com:5000/init");
+        //}
         startLoading();
 
     }
@@ -60,7 +60,7 @@ public class LoadingActivity extends Activity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent=new Intent(LoadingActivity.this,FirstCheckActivity.class);
+                Intent intent=new Intent(LoadingActivity.this,LoginActivity.class);
 //                Intent intent=new Intent(LoadingActivity.this,MainActivity.class);
 //                intent.putExtra("all_article",all_article);
                 startActivity(intent);

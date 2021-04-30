@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        card.clear();
+
 //        Intent listIntent=getIntent();
 //        all_article = (ArrayList<ArrayList<Article>>) listIntent.getSerializableExtra("all_article");
         
@@ -64,15 +66,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 String title=item.getTitle().toString();
-                if(title.equals("Logout")||title.equals("Login")) {
-                    if (title.equals("Logout")) {
-                        item.setTitle("Login");
-                    } else if (title.equals("Login")) {
-                        item.setTitle("Logout");
-                    }
+                if(title.equals("Logout")) {
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
                 else {
-                    Intent intent = new Intent(getApplicationContext(), ListViewActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), ListActivity.class);
                     switch (title) {
                         case "정치":
                             cate = "100";
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                             break;
                         case "IT/과학":
                             cate = "105";
-                            //                       intent.putExtra("article_list",all_article.get(5));
+//                       intent.putExtra("article_list",all_article.get(5));
                             break;
                         default:
                             break;
@@ -124,7 +124,6 @@ public class MainActivity extends AppCompatActivity {
         view.setLayoutManager(new LinearLayoutManager(this));
 
     }
-
 
     public class NetworkTask extends AsyncTask<String, String, String> {
         @Override
@@ -189,11 +188,13 @@ public class MainActivity extends AppCompatActivity {
             super.onPostExecute(result);
             result=result.substring(1, result.length()-1);
             String[] result_arr=result.split(" ");
+            System.out.println(result);
 
             String sql;
-            String str="select * from article where count='";
+            String str="select * from article where count=";
             for(int i=0;i<result_arr.length;i++){
-                sql=str+result_arr[i]+"'";
+                sql=str+result_arr[i];
+                System.out.println(sql);
                 Cursor cursor = database.rawQuery(sql,null);
                 while(cursor.moveToNext()){
                     card.add(new CardViewItemDTO(cursor.getString(12),cursor.getString(1)));

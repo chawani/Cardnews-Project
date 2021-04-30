@@ -1,7 +1,9 @@
 package com.example.NewSeconds;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -121,7 +123,15 @@ public class JoinActivity extends Activity {
                 finish();
             }
             else {
-
+                AlertDialog.Builder dlg = new AlertDialog.Builder(JoinActivity.this);
+                dlg.setTitle("회원가입 실패"); //제목
+                dlg.setMessage("다시 회원가입 해 주세요."); // 메시지
+//                버튼 클릭시 동작
+                dlg.setPositiveButton("확인",new DialogInterface.OnClickListener(){
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+                dlg.show();
             }
         }
     }
