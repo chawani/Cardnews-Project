@@ -1,13 +1,21 @@
 package com.example.NewSeconds;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -40,11 +48,6 @@ public class FirstCheckActivity extends AppCompatActivity {
 
         //gif 이미지 로딩
         ImageView imgGif = (ImageView) findViewById(R.id.gif_image);
-        Glide.with(this)
-                .asGif()    // GIF 로딩
-                .load(R.raw.checkmark)
-                .into(imgGif);
-
 
         int cnt=0;
         DBHelper dbHelper = new DBHelper(this,"articledb.db",null,1);
@@ -75,6 +78,11 @@ public class FirstCheckActivity extends AppCompatActivity {
         String sql;
         for(int i = 0 ; i < 10 ; i++) {
             num[i]=rand.nextInt(count_list.size());
+            for(int j=0;j<i;j++){
+                if(num[i]==num[j]){
+                    i--;
+                }
+            }
         }
         sql=str+count_list.get(num[0])+"'";
         cursor2 = database.rawQuery(sql,null);
@@ -123,23 +131,52 @@ public class FirstCheckActivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
+                int count=0;
                 String result = "";  // 결과를 출력할 문자열  ,  항상 스트링은 빈문자열로 초기화 하는 습관을 가지자
-                if(chk1.isChecked() == true) result += (num[0]+",");
-                if(chk2.isChecked() == true) result += (num[1]+",");
-                if(chk3.isChecked() == true) result += (num[2]+",");
-                if(chk4.isChecked() == true) result += (num[3]+",");
-                if(chk5.isChecked() == true) result += (num[4]+",");
-                if(chk6.isChecked() == true) result += (num[5]+",");
-                if(chk7.isChecked() == true) result += (num[6]+",");
-                if(chk8.isChecked() == true) result += (num[7]+",");
-                if(chk9.isChecked() == true) result += (num[8]+",");
-                if(chk10.isChecked() == true) result += (num[9]+",");
-                result=result.substring(0,result.length()-1);
-                System.out.println(result);
-                Intent intent=new Intent(getApplicationContext(), JoinActivity.class);
-                intent.putExtra("first_news",result);
-                startActivity(intent);
-                finish();
+                if(chk1.isChecked() == true) {result += (num[0]+",");count++;}
+                if(chk2.isChecked() == true) {result += (num[1]+",");count++;}
+                if(chk3.isChecked() == true) {result += (num[2]+",");count++;}
+                if(chk4.isChecked() == true) {result += (num[3]+",");count++;}
+                if(chk5.isChecked() == true) {result += (num[4]+",");count++;}
+                if(chk6.isChecked() == true) {result += (num[5]+",");count++;}
+                if(chk7.isChecked() == true) {result += (num[6]+",");count++;}
+                if(chk8.isChecked() == true) {result += (num[7]+",");count++;}
+                if(chk9.isChecked() == true) {result += (num[8]+",");count++;}
+                if(chk10.isChecked() == true) {result += (num[9]+",");count++;}
+                if(count!=3){
+                    AlertDialog.Builder dlg = new AlertDialog.Builder(FirstCheckActivity.this);
+                    dlg.setTitle("알림"); //제목
+                    if(count<3) {
+                        dlg.setMessage("기사를 3개 선택해 주세요."); // 메시지
+                    }else{
+                        dlg.setMessage("기사를 3개만 선택해 주세요.");
+                    }
+//                버튼 클릭시 동작
+                    dlg.setPositiveButton("확인",new DialogInterface.OnClickListener(){
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
+                    dlg.show();
+                }
+                else {
+                    Glide.with(view.getContext())
+                            .asGif()    // GIF 로딩
+                            .load(R.raw.checkmark)
+                            .into(imgGif);
+                    imgGif.setVisibility(view.VISIBLE);
+                    result = result.substring(0, result.length() - 1);
+                    //System.out.println(result);
+                    Intent intent = new Intent(getApplicationContext(), JoinActivity.class);
+                    intent.putExtra("first_news", result);
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            startActivity(intent);
+                            finish();
+                        }
+                    }, 1500); //딜레이 타임 조절
+                }
             }
         });
     }

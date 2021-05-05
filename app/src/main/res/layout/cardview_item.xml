@@ -4,9 +4,10 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.cardview.widget.CardView
-        android:layout_margin="10dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="10dp"
         android:elevation="5dp"
-        app:cardCornerRadius="10dp"
+        app:cardCornerRadius="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <RelativeLayout
@@ -22,9 +23,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/cardview_imageview"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
                 android:text="제목"
+                android:textSize="20dp"
                 android:id="@+id/cardview_title"/>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

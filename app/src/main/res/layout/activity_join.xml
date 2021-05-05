@@ -3,13 +3,44 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/loading_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/first_page_image1"
+        android:scaleType="centerCrop"/>
+
+    <ImageView
+        android:id="@+id/box"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="70dp"
+        android:background="@drawable/style_loginbox" />
+
+
+    <TextView
+        android:id="@+id/txtview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="가입 정보를\n입력해주세요"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
+        android:textSize="40dp"
+        />
+
     <EditText
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:id="@+id/idInput"
         android:layout_centerHorizontal="true"
         android:hint="Id"
-        android:layout_marginTop="151dp" />
+        android:layout_marginTop="40dp"
+        android:layout_below="@id/txtview"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/style_edittext" />
 
     <EditText
         android:layout_width="300dp"
@@ -17,7 +48,8 @@
         android:id="@+id/passwordInput"
         android:layout_centerHorizontal="true"
         android:hint="Password"
-        android:layout_below="@+id/idInput" />
+        android:layout_below="@+id/idInput"
+        android:background="@drawable/style_edittext" />
 
     <Button
         android:layout_width="150dp"
@@ -25,8 +57,10 @@
         android:text="회원 가입"
         android:id="@+id/submitButton"
         android:textAllCaps="false"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:layout_below="@+id/passwordInput"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:background="#4BAEFD"
+        android:textColor="@color/white"/>
 
 </RelativeLayout>

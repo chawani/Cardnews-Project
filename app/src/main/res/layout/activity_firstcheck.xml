@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/firstcheck"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/firstcheck_background">
 
     <ImageView
         android:id="@+id/gif_image"
@@ -13,27 +15,42 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="관심 있는 뉴스기사를 골라주세요. (앱 설치 시 최초 한 번)\n"
-        android:textSize="28sp" />
+        android:layout_marginLeft="15dp"
+        android:text="안녕하세요,"
+        android:textColor="#39B7EF"
+        android:fontFamily="@font/nanum_square_ac_regular"
+        android:textSize="50sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="관심 있는 뉴스기사를 3개 골라주세요"
+        android:layout_below="@+id/loginpasswordInput"
+        android:fontFamily="@font/nanum_square_ac_regular"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:textSize="20sp" />
 
     <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/ScrollView1"
         android:layout_width="match_parent"
-        android:layout_height="350dp">
+        android:layout_height="330dp"
+        android:layout_marginTop="20dp"
+        android:padding="5dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:padding="5dp">
             <CheckBox
                 android:id="@+id/checkBox1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:text="정치"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:buttonTint="#39B7EF"/>
 
             <CheckBox
                 android:id="@+id/checkBox2"
@@ -41,7 +58,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:text="경제"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:buttonTint="#39B7EF"/>
 
             <CheckBox
                 android:id="@+id/checkBox3"
@@ -49,7 +67,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:text="사회"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:buttonTint="#39B7EF"/>
 
             <CheckBox
                 android:id="@+id/checkBox4"
@@ -57,7 +76,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:text="생활/문화"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:buttonTint="#39B7EF"/>
 
             <CheckBox
                 android:id="@+id/checkBox5"
@@ -65,22 +85,25 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:text="세계"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:buttonTint="#39B7EF"/>
 
             <CheckBox
                 android:id="@+id/checkBox6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_margin="8dp"
                 android:text="IT/과학"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:buttonTint="#39B7EF"/>
             <CheckBox
                 android:id="@+id/checkBox7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:text="정치"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:buttonTint="#39B7EF"/>
 
             <CheckBox
                 android:id="@+id/checkBox8"
@@ -88,7 +111,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:text="경제"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:buttonTint="#39B7EF"/>
 
             <CheckBox
                 android:id="@+id/checkBox9"
@@ -96,7 +120,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:text="사회"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:buttonTint="#39B7EF"/>
 
             <CheckBox
                 android:id="@+id/checkBox10"
@@ -104,7 +129,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:text="생활/문화"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:buttonTint="#39B7EF"/>
 
         </LinearLayout>
     </ScrollView>
@@ -115,7 +141,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="확인"
-        android:textSize="25sp">
+        android:textAlignment="center"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/nanum_square_ac_regular"
+        android:background="@drawable/style_button"
+        android:textSize="20sp">
     </Button>
 
 </LinearLayout>

@@ -9,7 +9,7 @@
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
     <ImageButton
-        android:id="@+id/iv_menu"
+        android:id="@+id/back"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_alignParentTop="true"
@@ -20,7 +20,7 @@
         android:background="@android:color/transparent"
         android:foreground="?attr/selectableItemBackground"
         android:scaleType="fitCenter"
-        app:srcCompat="@drawable/menu2" />
+        app:srcCompat="@drawable/undo"/>
 
     <TextView
         android:id="@+id/toolbar_title"

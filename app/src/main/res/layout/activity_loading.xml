@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="18dp"
-    android:paddingRight="18dp"
-    android:background="@drawable/first_page_image1">
+    android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/loading_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/first_page_image1"
+        android:scaleType="centerCrop"/>
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_gravity="center_vertical"
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:fontFamily="@font/hs_bombaram_regular"
-        android:gravity="center|bottom"
+        android:gravity="center"
         android:text="NewSeconds"
         android:textColor="#FFFFFF"
-        android:shadowColor="#FF464646"
+        android:shadowColor="#FF000000"
         android:shadowDx="5.0"
         android:shadowDy="5.0"
         android:shadowRadius="1.0"
@@ -26,12 +31,15 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:text="10초 뉴스"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/nanum_square_ac_regular"
+        android:text="20초 뉴스"
         android:textColor="#FFFFFF"
-        android:fontFamily="@font/hs_bombaram_regular"
-        android:gravity="center"
-        android:textSize="25sp"/>
+        android:shadowColor="#FF000000"
+        android:textSize="25sp" />
 
-</LinearLayout>
+</RelativeLayout>

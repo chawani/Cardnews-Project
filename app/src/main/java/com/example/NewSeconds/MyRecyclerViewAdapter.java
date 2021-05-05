@@ -82,6 +82,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                     String select_sql="select * from article where title='"+selection+"'";
                     Intent intent=new Intent(v.getContext(), FragmentActivity.class);
                     intent.putExtra("select_sql",select_sql);
+                    intent.putExtra("selection",selection);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     v.getContext().startActivity(intent);
                 }

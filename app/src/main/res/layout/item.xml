@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background='#000000'
+    android:background='#A0000000'
     android:gravity="center"
     >
     <FrameLayout
@@ -15,8 +15,7 @@
             android:id="@+id/item_imageview"
             android:layout_width="match_parent"
             android:layout_height="500dp"
-            android:layout_gravity="center"
-            android:background="#626768" />
+            android:layout_gravity="center"/>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,7 +30,8 @@
                 android:textColor="#ffffff"
                 android:textStyle="bold"
                 android:fontFamily="@font/nanum_square_ac_regular"
-                android:text="테스트"/>
+                android:text="테스트\n테스트\n테스트"
+                android:lineSpacingExtra="15dp"/>
         </LinearLayout>
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

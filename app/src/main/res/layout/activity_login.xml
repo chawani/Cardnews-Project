@@ -1,41 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/loading_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/first_page_image1"
+        android:scaleType="centerCrop"/>
+
+    <ImageView
+        android:id="@+id/box"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="70dp"
+        android:background="@drawable/style_loginbox" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
+        android:src="@drawable/login" />
 
     <EditText
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:id="@+id/loginidInput"
         android:layout_centerHorizontal="true"
-        android:hint="Id"
-        android:layout_marginTop="151dp" />
+        android:hint="아이디"
+        android:layout_marginTop="300dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/style_edittext"/>
 
     <EditText
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:id="@+id/loginpasswordInput"
         android:layout_centerHorizontal="true"
-        android:hint="Password"
-        android:layout_below="@+id/loginidInput" />
+        android:hint="비밀번호"
+        android:layout_below="@+id/loginidInput"
+        android:background="@drawable/style_edittext"/>
 
     <Button
-        android:layout_width="150dp"
-        android:layout_height="55dp"
-        android:text="Log in"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:text="로그인"
         android:id="@+id/loginButton"
-        android:textAllCaps="false"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="20dp"
         android:layout_below="@+id/loginpasswordInput"
-        android:layout_toLeftOf="@+id/signupButton" />
+        android:layout_alignLeft="@id/loginpasswordInput"
+        android:background="#4BAEFD"
+        android:textColor="@color/white"
+        android:textStyle="bold"/>
 
     <Button
-        android:layout_width="150dp"
-        android:layout_height="55dp"
-        android:text="Sign up"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:text="회원가입"
         android:id="@+id/signupButton"
         android:textAllCaps="false"
         android:layout_alignTop="@+id/loginButton"
-        android:layout_alignRight="@+id/loginpasswordInput" />
+        android:background="#D3D3D3"
+        android:layout_below="@+id/loginpasswordInput"
+        android:layout_alignRight="@+id/loginpasswordInput"
+        android:textStyle="bold"/>
 
 </RelativeLayout>

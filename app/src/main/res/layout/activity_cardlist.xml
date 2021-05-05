@@ -3,6 +3,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/bar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <include
+                layout="@layout/toolbar2"/>
+        </com.google.android.material.appbar.AppBarLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <TextView
+        android:id="@+id/cate_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="카테고리"
+        android:textSize="20dp"
+        android:layout_marginVertical="10dp"
+        android:layout_marginLeft="20dp"
+        android:fontFamily="@font/nanum_square_ac_regular"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cate_recyclerview"
         android:layout_width="match_parent"

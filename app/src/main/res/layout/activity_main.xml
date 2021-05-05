@@ -27,8 +27,10 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="오늘의 추천 뉴스"
-        android:layout_margin="5dp"
+        android:text="맞춤 추천 뉴스"
+        android:fontFamily="@font/nanum_square_ac_regular"
+        android:layout_marginVertical="10dp"
+        android:layout_marginLeft="20dp"
         android:textSize="20dp"/>
     <LinearLayout
 
