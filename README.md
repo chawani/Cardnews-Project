@@ -1,9 +1,28 @@
 # Cardnews-Project
 캡스톤디자인. 졸업 작품
-<br>
-맡은 역할: Android Frontend, Backend
-<br><br>
 
+<br>
+
+## 0.
+* 기술 스택<br>
+![image](https://user-images.githubusercontent.com/60432062/125259974-d1a82c80-e33a-11eb-963e-0b97f3df263e.png)
+*	프로젝트 기간 : 2020.09-2021.05
+*	프로젝트 참여 인원 : 4인
+*	프로젝트 내용
+1.	사이트별 뉴스 데이터 크롤링
+2.	자연어처리 및 Text Rank알고리즘을 이용한 요약문 추출 후 카드뉴스 형태로 제공
+3.	코사인 유사도를 이용한 컨텐츠 기반 뉴스 추천 기능
+
+* 개인 수행 내역 - 안드로이드 전반
+1.	flask 웹에서 JSON 형태로 DB데이터 출력
+2.	안드로이드 내 SQLite 이용하여 DB생성 및 받아온 정보 저장, 활용
+3.	로딩, 로그인, 회원가입, 뉴스 열람 등 안드로이드에서 웹서버로의 각종 요청 처리
+4.	로그인 후 저장 유지 정보 관리
+5.	각 페이지 디자인 및 Activity 구현
+
+<br>
+
+## 1.
 * 로딩화면
 <img width="30%" alt="로딩" src="https://user-images.githubusercontent.com/60432062/120330347-adaeff80-c327-11eb-8c7a-0ebea8b836c1.png">
 로딩화면이 뜨는동안 MySQL 데이터베이스에 새로 업데이트된 뉴스들을 불러와 SQLite에 저장한다.
